@@ -13,45 +13,49 @@ import { useSound } from "use-sound";
 import sound from "../../sounds/mixkit-marimba-waiting-ringtone-1360.wav";
 import "./Timer.css";
 
-const useStyles = makeStyles({
-  cardWrapper: {
-    padding: 10,
-  },
-  btns: {
-    marginRight: 20,
-  },
-  btnsWrapper: {
-    alignItems: "center",
-    paddingTop: 30,
-  },
-  volumeDown: {
-    cursor: "pointer",
-  },
-  stopBtn: {
-    backgroundColor: "red",
-  },
-  playBtn: {
-    backgroundColor: "green",
-  },
-});
-
 export default function Timer() {
   const [key, setKey] = useState(0);
   const [play, setPlay] = useState(false);
   const [duration, setDuration] = useState(1200);
-  const [finished, setFinished] = useState(false);
+  const [finished, setFinished] = useState(true);
+
+  const useStyles = makeStyles({
+    cardWrapper: {
+      padding: 10,
+    },
+    btns: {
+      marginRight: 20,
+    },
+    btnsWrapper: {
+      alignItems: "center",
+      paddingTop: 30,
+    },
+    volumeDown: {
+      cursor: "pointer",
+      fontSize: "2em",
+    },
+    stopBtn: {
+      backgroundColor: "red",
+    },
+    playBtn: {
+      backgroundColor: "green",
+    },
+  });
 
   const classes = useStyles();
+
   const [playOn, { stop }] = useSound(sound, { volume: 0.9 });
 
   const handleSelect = (event) => {
     setDuration(event.target.value);
     setKey((prevKey) => prevKey + 1);
+    setPlay(false);
   };
 
   const handleReload = () => {
     setKey((prevKey) => prevKey + 1);
     setPlay(false);
+    stop();
   };
   const renderTime = ({ remainingTime }) => {
     const minutes = Math.floor(remainingTime / 60);
