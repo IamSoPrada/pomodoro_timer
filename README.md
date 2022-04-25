@@ -1,5 +1,6 @@
 # Pomodoro v1
 https://pomodor-learning.netlify.app/
+[![Maintainability](https://api.codeclimate.com/v1/badges/48cc22511c6b0d5874c9/maintainability)](https://codeclimate.com/github/IamSoPrada/pomodoro_timer/maintainability)
 #
 Данный репозиторий является реализацией таймера продуктивности с возможностью выбора интервала времени.
 
